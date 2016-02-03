@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.13.4",
-    "raspicam": "^0.2.13"
+    "raspicam": "^0.2.13",
+    "twit": "^2.2.2"
   },
   "devDependencies": {},
   "scripts": {
