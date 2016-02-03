@@ -1,0 +1,25 @@
+{
+  "name": "node-picam-selfie",
+  "version": "1.0.0",
+  "description": "In which a Raspberry Pi takes selfies and makes them available on the Internet.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "raspicam": "^0.2.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cchan/node-picam-selfie.git"
+  },
+  "author": "Clive Chan (http://clive.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cchan/node-picam-selfie/issues"
+  },
+  "homepage": "https://github.com/cchan/node-picam-selfie#readme"
+}
