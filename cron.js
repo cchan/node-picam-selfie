@@ -3,8 +3,9 @@
 var Twit = require("twit");
 var secrets = require("./secrets");
 var RaspiCam = require('raspicam');
+var fs = require("fs");
 
-var client = new Twit({
+var T = new Twit({
 	consumer_key: secrets.TWITTER_CONSUMER_KEY,
 	consumer_secret: secrets.TWITTER_CONSUMER_SECRET,
 	access_token: secrets.TWITTER_ACCESS_TOKEN_KEY,
@@ -20,6 +21,7 @@ var camera = new RaspiCam({
 	encoding: 'jpg',
 	timeout: 0 //take pic immediately
 });
+
 camera.on('read', function(err, timestamp, filename){
 	if(filename.indexOf('~')!=-1)
 		return;
@@ -30,13 +32,15 @@ camera.on('read', function(err, timestamp, filename){
 	// code from https://www.npmjs.com/package/twit
 	var b64content = fs.readFileSync('./selfies/'+filename, { encoding: 'base64' });
 	// first we must post the media to Twitter 
-	client.post('media/upload', { media_data: b64content }, function (err, data, response) {
+	T.post('media/upload', { media_data: b64content }, function (err, data, response) {
 		// now we can reference the media and post a tweet (media will attach to the tweet) 
 		var mediaIdStr = data.media_id_string;
 		var params = { status: 'Selfie!', media_ids: [mediaIdStr] };
-		client.post('statuses/update', params, function (err, data, response) {
+		T.post('statuses/update', params, function (err, data, response) {
 			console.log(data);
 			console.log('Success!');
 		});
 	});
 });
+
+camera.start();
