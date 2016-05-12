@@ -16,7 +16,7 @@ console.log('Getting file... ');
 var camera = new RaspiCam({
 	mode:'photo',
 	output:'./selfies/selfie_'
-		+(new Date()).toISOString().replace('T','_').replace('Z','')
+		+(new Date()).toISOString().replace('T','_').replace('Z','').replace(/:/g,'-')
 		+'.jpg',
 	encoding: 'jpg',
 	timeout: 0 //take pic immediately

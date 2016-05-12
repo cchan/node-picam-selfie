@@ -1,1 +1,1 @@
-0 * * * * node ~/node/cron.js
+0 * * * * cd /media/usb/NodePicamSelfie && node ~/node/cron.js
